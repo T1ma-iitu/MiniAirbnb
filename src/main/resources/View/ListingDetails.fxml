@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.ListingDetailsController">
+
+    <Label fx:id="titleLabel" text="Название" />
+    <Label fx:id="cityLabel" text="Город" />
+    <Label fx:id="roomsLabel" text="Комнаты" />
+    <Label fx:id="priceLabel" text="Цена" />
+
+    <Button text="Забронировать"/>
+    <Button text="Назад"/>
+
+</VBox>
