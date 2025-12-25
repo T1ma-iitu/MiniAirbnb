@@ -1,27 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.CatalogController"
-            prefHeight="600.0" prefWidth="800.0">
+            style="-fx-background-color: #FFFFFF;">
 
-    <ScrollPane layoutX="10" layoutY="10"
-                prefWidth="780" prefHeight="580"
-                fitToWidth="true">
+    <!-- Верхняя панель -->
+    <top>
+        <VBox style="-fx-background-color: #FF385C; -fx-padding: 20;">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <!-- Кнопка назад -->
+                <Button text="← Назад" onAction="#backToMainMenu"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand; -fx-border-color: white; -fx-border-radius: 5; -fx-padding: 8 15;"/>
 
-        <content>
-            <VBox fx:id="listingsContainer" spacing="15">
-                <padding>
-                    <Insets top="10" right="10" bottom="10" left="10"/>
-                </padding>
+                <Label text="🏠 Каталог жилья" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;">
+                    <font>
+                        <Font name="System Bold" size="28"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Основной контент -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="20" style="-fx-padding: 30;">
+
+                <!-- Фильтры -->
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <Label text="Фильтры:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <Button text="Цена" style="-fx-background-color: #F7F7F7; -fx-padding: 8 15; -fx-background-radius: 20; -fx-cursor: hand;"/>
+                    <Button text="Тип жилья" style="-fx-background-color: #F7F7F7; -fx-padding: 8 15; -fx-background-radius: 20; -fx-cursor: hand;"/>
+                    <Button text="Количество комнат" style="-fx-background-color: #F7F7F7; -fx-padding: 8 15; -fx-background-radius: 20; -fx-cursor: hand;"/>
+                    <Button text="Удобства" style="-fx-background-color: #F7F7F7; -fx-padding: 8 15; -fx-background-radius: 20; -fx-cursor: hand;"/>
+                </HBox>
+
+                <Separator/>
+
+                <!-- Список объявлений (карточки) -->
+                <GridPane fx:id="listingsGrid" hgap="20" vgap="20">
+
+                    <!-- Карточка 1 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #EBEBEB; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-cursor: hand;"
+                          GridPane.columnIndex="0" GridPane.rowIndex="0" prefWidth="300">
+
+                        <!-- Изображение (заглушка) -->
+                        <StackPane style="-fx-background-color: #E0E0E0; -fx-background-radius: 12 12 0 0;" prefHeight="200">
+                            <Label text="🏖️" style="-fx-font-size: 60px;"/>
+                        </StackPane>
+
+                        <!-- Информация -->
+                        <VBox spacing="5" style="-fx-padding: 15;">
+                            <HBox alignment="CENTER_LEFT" spacing="5">
+                                <Label text="⭐ 4.95" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                                <Label text="(128 отзывов)" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                            </HBox>
+
+                            <Label text="Уютная квартира у моря" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Алматы, Казахстан" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            <Label text="2 гостя • 1 спальня • 1 кровать • 1 ванная" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+
+                            <HBox alignment="CENTER_LEFT" spacing="5" style="-fx-padding: 10 0 0 0;">
+                                <Label text="15 000 ₸" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                <Label text="/ ночь" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Карточка 2 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #EBEBEB; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-cursor: hand;"
+                          GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300">
+
+                        <StackPane style="-fx-background-color: #E0E0E0; -fx-background-radius: 12 12 0 0;" prefHeight="200">
+                            <Label text="🏔️" style="-fx-font-size: 60px;"/>
+                        </StackPane>
+
+                        <VBox spacing="5" style="-fx-padding: 15;">
+                            <HBox alignment="CENTER_LEFT" spacing="5">
+                                <Label text="⭐ 4.87" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                                <Label text="(96 отзывов)" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                            </HBox>
+
+                            <Label text="Домик в горах" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Алматы, Казахстан" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            <Label text="4 гостя • 2 спальни • 3 кровати • 1 ванная" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+
+                            <HBox alignment="CENTER_LEFT" spacing="5" style="-fx-padding: 10 0 0 0;">
+                                <Label text="25 000 ₸" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                <Label text="/ ночь" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Карточка 3 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #EBEBEB; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-cursor: hand;"
+                          GridPane.columnIndex="2" GridPane.rowIndex="0" prefWidth="300">
+
+                        <StackPane style="-fx-background-color: #E0E0E0; -fx-background-radius: 12 12 0 0;" prefHeight="200">
+                            <Label text="🏙️" style="-fx-font-size: 60px;"/>
+                        </StackPane>
+
+                        <VBox spacing="5" style="-fx-padding: 15;">
+                            <HBox alignment="CENTER_LEFT" spacing="5">
+                                <Label text="⭐ 4.92" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                                <Label text="(203 отзыва)" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                            </HBox>
+
+                            <Label text="Студия в центре города" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Алматы, Казахстан" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            <Label text="2 гостя • Студия • 1 кровать • 1 ванная" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+
+                            <HBox alignment="CENTER_LEFT" spacing="5" style="-fx-padding: 10 0 0 0;">
+                                <Label text="20 000 ₸" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                <Label text="/ ночь" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Карточка 4 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #EBEBEB; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-cursor: hand;"
+                          GridPane.columnIndex="0" GridPane.rowIndex="1" prefWidth="300">
+
+                        <StackPane style="-fx-background-color: #E0E0E0; -fx-background-radius: 12 12 0 0;" prefHeight="200">
+                            <Label text="🏡" style="-fx-font-size: 60px;"/>
+                        </StackPane>
+
+                        <VBox spacing="5" style="-fx-padding: 15;">
+                            <HBox alignment="CENTER_LEFT" spacing="5">
+                                <Label text="⭐ 5.0" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                                <Label text="(45 отзывов)" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                            </HBox>
+
+                            <Label text="Загородный дом" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Алматинская область" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            <Label text="6 гостей • 3 спальни • 4 кровати • 2 ванные" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+
+                            <HBox alignment="CENTER_LEFT" spacing="5" style="-fx-padding: 10 0 0 0;">
+                                <Label text="35 000 ₸" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                <Label text="/ ночь" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Карточка 5 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #EBEBEB; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-cursor: hand;"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300">
+
+                        <StackPane style="-fx-background-color: #E0E0E0; -fx-background-radius: 12 12 0 0;" prefHeight="200">
+                            <Label text="🏨" style="-fx-font-size: 60px;"/>
+                        </StackPane>
+
+                        <VBox spacing="5" style="-fx-padding: 15;">
+                            <HBox alignment="CENTER_LEFT" spacing="5">
+                                <Label text="⭐ 4.78" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                                <Label text="(312 отзывов)" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                            </HBox>
+
+                            <Label text="Апартаменты класса люкс" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Алматы, Казахстан" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            <Label text="3 гостя • 1 спальня • 2 кровати • 1 ванная" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+
+                            <HBox alignment="CENTER_LEFT" spacing="5" style="-fx-padding: 10 0 0 0;">
+                                <Label text="40 000 ₸" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                <Label text="/ ночь" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Карточка 6 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #EBEBEB; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-cursor: hand;"
+                          GridPane.columnIndex="2" GridPane.rowIndex="1" prefWidth="300">
+
+                        <StackPane style="-fx-background-color: #E0E0E0; -fx-background-radius: 12 12 0 0;" prefHeight="200">
+                            <Label text="🌲" style="-fx-font-size: 60px;"/>
+                        </StackPane>
+
+                        <VBox spacing="5" style="-fx-padding: 15;">
+                            <HBox alignment="CENTER_LEFT" spacing="5">
+                                <Label text="⭐ 4.89" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                                <Label text="(67 отзывов)" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                            </HBox>
+
+                            <Label text="Коттедж в лесу" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Алматинская область" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            <Label text="5 гостей • 2 спальни • 3 кровати • 2 ванные" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+
+                            <HBox alignment="CENTER_LEFT" spacing="5" style="-fx-padding: 10 0 0 0;">
+                                <Label text="30 000 ₸" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                <Label text="/ ночь" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                </GridPane>
             </VBox>
-        </content>
+        </ScrollPane>
+    </center>
 
-    </ScrollPane>
-
-</AnchorPane>
+</BorderPane>

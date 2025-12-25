@@ -1,19 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox spacing="10" alignment="CENTER"
-      xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.ListingDetailsController">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.ListingDetailsController"
+            style="-fx-background-color: #FFFFFF;">
 
-    <Label fx:id="titleLabel" text="Название" />
-    <Label fx:id="cityLabel" text="Город" />
-    <Label fx:id="roomsLabel" text="Комнаты" />
-    <Label fx:id="priceLabel" text="Цена" />
+    <top>
+        <VBox style="-fx-background-color: #FF385C; -fx-padding: 20;">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Button text="← Назад к каталогу" onAction="#backToCatalog"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand; -fx-border-color: white; -fx-border-radius: 5; -fx-padding: 8 15;"/>
+            </HBox>
+        </VBox>
+    </top>
 
-    <Button text="Забронировать"/>
-    <Button text="Назад"/>
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="30" style="-fx-padding: 40;">
 
-</VBox>
+                <HBox spacing="30">
+                    <StackPane style="-fx-background-color: #E0E0E0; -fx-background-radius: 12;"
+                               prefWidth="500" prefHeight="400">
+                        <Label fx:id="emojiLabel" text="🏠" style="-fx-font-size: 120px;"/>
+                    </StackPane>
+
+                    <VBox spacing="20" HBox.hgrow="ALWAYS">
+                        <VBox spacing="10">
+                            <Label fx:id="titleLabel" text="Название объявления"
+                                   style="-fx-font-size: 32px; -fx-font-weight: bold;" wrapText="true">
+                                <font>
+                                    <Font name="System Bold" size="32"/>
+                                </font>
+                            </Label>
+
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label fx:id="ratingLabel" text="⭐ 4.95"
+                                       style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                <Label fx:id="reviewsLabel" text="(128 отзывов)"
+                                       style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                                <Label text="•" style="-fx-text-fill: #717171;"/>
+                                <Label fx:id="cityLabel" text="Алматы, Казахстан"
+                                       style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            </HBox>
+                        </VBox>
+
+                        <Separator/>
+
+                        <VBox spacing="15">
+                            <Label fx:id="typeLabel" text="Тип: Квартира"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20">
+                                <VBox spacing="5">
+                                    <Label text="👥 Гости" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                                    <Label fx:id="guestsLabel" text="2" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                </VBox>
+
+                                <VBox spacing="5">
+                                    <Label text="🛏️ Спальни" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                                    <Label fx:id="bedroomsLabel" text="1" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                </VBox>
+
+                                <VBox spacing="5">
+                                    <Label text="🛌 Кровати" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                                    <Label fx:id="bedsLabel" text="1" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                </VBox>
+
+                                <VBox spacing="5">
+                                    <Label text="🚿 Ванные" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                                    <Label fx:id="bathroomsLabel" text="1" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+
+                        <Separator/>
+
+                        <VBox spacing="15" style="-fx-background-color: #F7F7F7; -fx-padding: 20; -fx-background-radius: 12;">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Label fx:id="priceLabel" text="15 000 ₸"
+                                       style="-fx-font-size: 28px; -fx-font-weight: bold;">
+                                    <font>
+                                        <Font name="System Bold" size="28"/>
+                                    </font>
+                                </Label>
+                                <Label text="за ночь" style="-fx-font-size: 16px; -fx-text-fill: #717171;"/>
+                            </HBox>
+
+                            <Button text="Забронировать" onAction="#bookListing"
+                                    style="-fx-background-color: #FF385C; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 15 40; -fx-cursor: hand;"
+                                    prefWidth="300">
+                                <font>
+                                    <Font name="System Bold" size="18"/>
+                                </font>
+                            </Button>
+
+                            <Label text="Вы пока ничего не платите"
+                                   style="-fx-font-size: 12px; -fx-text-fill: #717171; -fx-alignment: center;"/>
+                        </VBox>
+                    </VBox>
+                </HBox>
+
+                <Separator/>
+
+                <VBox spacing="15">
+                    <Label text="Описание"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="24"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="descriptionLabel"
+                           text="Описание объявления будет здесь..."
+                           style="-fx-font-size: 16px; -fx-text-fill: #222222; -fx-line-spacing: 5px;"
+                           wrapText="true"/>
+                </VBox>
+
+                <Separator/>
+
+                <VBox spacing="15">
+                    <Label text="Что предлагается"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="24"/>
+                        </font>
+                    </Label>
+
+                    <FlowPane fx:id="amenitiesPane" hgap="15" vgap="15">
+                    </FlowPane>
+                </VBox>
+
+                <Separator/>
+
+                <VBox spacing="15">
+                    <Label text="Важная информация"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="24"/>
+                        </font>
+                    </Label>
+
+                    <VBox spacing="10">
+                        <HBox spacing="10">
+                            <Label text="📅" style="-fx-font-size: 18px;"/>
+                            <Label text="Заезд: после 14:00" style="-fx-font-size: 16px;"/>
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <Label text="🚪" style="-fx-font-size: 18px;"/>
+                            <Label text="Выезд: до 12:00" style="-fx-font-size: 16px;"/>
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <Label text="🚭" style="-fx-font-size: 18px;"/>
+                            <Label text="Курение запрещено" style="-fx-font-size: 16px;"/>
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <Label text="🎉" style="-fx-font-size: 18px;"/>
+                            <Label text="Вечеринки запрещены" style="-fx-font-size: 16px;"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

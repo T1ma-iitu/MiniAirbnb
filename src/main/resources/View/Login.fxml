@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.LoginController"
+            style="-fx-background-color: #FFFFFF;">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #FF385C; -fx-padding: 20 40;">
+            <Button text="← Назад" onAction="#backToMainMenu"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand; -fx-border-color: white; -fx-border-radius: 5; -fx-padding: 8 15;"/>
+
+            <Label text="🏠 Mini Airbnb" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;">
+                <font>
+                    <Font name="System Bold" size="24"/>
+                </font>
+            </Label>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox alignment="CENTER" style="-fx-padding: 40;">
+
+            <VBox spacing="20" style="-fx-padding: 40;" HBox.hgrow="ALWAYS">
+                <Label text="Добро пожаловать!"
+                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #222222;">
+                    <font>
+                        <Font name="System Bold" size="36"/>
+                    </font>
+                </Label>
+
+                <Label text="Войдите, чтобы:"
+                       style="-fx-font-size: 20px; -fx-text-fill: #717171;"/>
+
+                <VBox spacing="15">
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="✓" style="-fx-font-size: 24px; -fx-text-fill: #00A699;"/>
+                        <Label text="Бронировать жильё" style="-fx-font-size: 18px;"/>
+                    </HBox>
+
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="✓" style="-fx-font-size: 24px; -fx-text-fill: #00A699;"/>
+                        <Label text="Смотреть историю бронирований" style="-fx-font-size: 18px;"/>
+                    </HBox>
+
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="✓" style="-fx-font-size: 24px; -fx-text-fill: #00A699;"/>
+                        <Label text="Сохранять избранное" style="-fx-font-size: 18px;"/>
+                    </HBox>
+
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="✓" style="-fx-font-size: 24px; -fx-text-fill: #00A699;"/>
+                        <Label text="Оставлять отзывы" style="-fx-font-size: 18px;"/>
+                    </HBox>
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Label text="🌍 Откройте для себя мир с Mini Airbnb"
+                       style="-fx-font-size: 16px; -fx-text-fill: #717171; -fx-font-style: italic;"/>
+            </VBox>
+
+            <Separator orientation="VERTICAL"/>
+
+            <VBox spacing="30" alignment="CENTER" style="-fx-padding: 40;" prefWidth="450">
+
+                <HBox spacing="0" alignment="CENTER">
+                    <Button fx:id="loginTabButton" text="Вход" onAction="#switchToLogin"
+                            style="-fx-background-color: #FF385C; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12 40; -fx-background-radius: 8 0 0 8; -fx-cursor: hand;"
+                            prefWidth="150">
+                        <font>
+                            <Font name="System Bold" size="16"/>
+                        </font>
+                    </Button>
+                    <Button fx:id="registerTabButton" text="Регистрация" onAction="#switchToRegister"
+                            style="-fx-background-color: #F7F7F7; -fx-text-fill: #222222; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12 40; -fx-background-radius: 0 8 8 0; -fx-cursor: hand;"
+                            prefWidth="150">
+                        <font>
+                            <Font name="System Bold" size="16"/>
+                        </font>
+                    </Button>
+                </HBox>
+
+                <VBox fx:id="loginForm" spacing="20" style="-fx-padding: 20;">
+                    <Label text="Войти в аккаунт"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="24"/>
+                        </font>
+                    </Label>
+
+                    <VBox spacing="8">
+                        <Label text="Email" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="loginEmailField" promptText="example@mail.kz"
+                                   style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #DDDDDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Пароль" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <PasswordField fx:id="loginPasswordField" promptText="Введите пароль"
+                                       style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #DDDDDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <Button text="Войти" onAction="#handleLogin"
+                            style="-fx-background-color: #FF385C; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 14 40; -fx-cursor: hand;"
+                            prefWidth="300">
+                        <font>
+                            <Font name="System Bold" size="16"/>
+                        </font>
+                    </Button>
+
+                    <Label text="Тестовый аккаунт: aizhan@mail.kz / password123"
+                           style="-fx-font-size: 12px; -fx-text-fill: #717171; -fx-alignment: center;"/>
+                </VBox>
+
+                <VBox fx:id="registerForm" spacing="20" style="-fx-padding: 20;" visible="false" managed="false">
+                    <Label text="Создать аккаунт"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="24"/>
+                        </font>
+                    </Label>
+
+                    <VBox spacing="8">
+                        <Label text="Имя" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="registerNameField" promptText="Ваше имя"
+                                   style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #DDDDDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Email" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="registerEmailField" promptText="example@mail.kz"
+                                   style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #DDDDDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Пароль" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <PasswordField fx:id="registerPasswordField" promptText="Минимум 6 символов"
+                                       style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #DDDDDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Подтвердите пароль" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <PasswordField fx:id="registerConfirmPasswordField" promptText="Повторите пароль"
+                                       style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #DDDDDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <Button text="Зарегистрироваться" onAction="#handleRegister"
+                            style="-fx-background-color: #FF385C; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 14 40; -fx-cursor: hand;"
+                            prefWidth="300">
+                        <font>
+                            <Font name="System Bold" size="16"/>
+                        </font>
+                    </Button>
+                </VBox>
+
+            </VBox>
+        </HBox>
+    </center>
+
+</BorderPane>
