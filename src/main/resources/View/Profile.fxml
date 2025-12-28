@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.ProfileController"
+            style="-fx-background-color: #FFFFFF;">
+
+    <!-- Шапка -->
+    <top>
+        <VBox style="-fx-background-color: #FF385C; -fx-padding: 20;">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Button text="← Главная" onAction="#backToMainMenu"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand; -fx-border-color: white; -fx-border-radius: 5; -fx-padding: 8 15;"/>
+
+                <Label text="👤 Личный кабинет" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;">
+                    <font>
+                        <Font name="System Bold" size="28"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Контент -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="30" style="-fx-padding: 40;">
+
+                <!-- Информация о пользователе -->
+                <VBox spacing="15" style="-fx-background-color: #F7F7F7; -fx-padding: 30; -fx-background-radius: 12;">
+                    <Label text="Профиль" style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="24"/>
+                        </font>
+                    </Label>
+
+                    <HBox spacing="20">
+                        <VBox spacing="5">
+                            <Label text="Имя:" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            <Label fx:id="nameLabel" text="Загрузка..." style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        </VBox>
+
+                        <VBox spacing="5">
+                            <Label text="Email:" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+                            <Label fx:id="emailLabel" text="Загрузка..." style="-fx-font-size: 18px;"/>
+                        </VBox>
+                    </HBox>
+
+                    <Button text="🚪 Выйти из аккаунта" onAction="#logout"
+                            style="-fx-background-color: #222222; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"
+                            prefWidth="200"/>
+                </VBox>
+
+                <!-- Мои бронирования -->
+                <VBox spacing="20">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="📅 Мои бронирования" style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                            <font>
+                                <Font name="System Bold" size="24"/>
+                            </font>
+                        </Label>
+
+                        <Button text="🔄 Обновить" onAction="#loadBookings"
+                                style="-fx-background-color: #F7F7F7; -fx-font-size: 14px; -fx-padding: 8 15; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+
+                    <!-- Список бронирований -->
+                    <VBox fx:id="bookingsContainer" spacing="15">
+                        <Label text="Загрузка бронирований..." style="-fx-font-size: 16px; -fx-text-fill: #717171;"/>
+                    </VBox>
+                </VBox>
+
+                <!-- Статистика -->
+                <VBox spacing="15" style="-fx-background-color: #F7F7F7; -fx-padding: 30; -fx-background-radius: 12;">
+                    <Label text="📊 Статистика" style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="24"/>
+                        </font>
+                    </Label>
+
+                    <HBox spacing="30">
+                        <VBox spacing="5" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;" prefWidth="150">
+                            <Label fx:id="totalBookingsLabel" text="0" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #FF385C;"/>
+                            <Label text="Всего бронирований" style="-fx-font-size: 12px; -fx-text-fill: #717171; -fx-text-alignment: center;" wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="5" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;" prefWidth="150">
+                            <Label fx:id="activeBookingsLabel" text="0" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #00A699;"/>
+                            <Label text="Активных" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                        </VBox>
+
+                        <VBox spacing="5" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;" prefWidth="150">
+                            <Label fx:id="totalSpentLabel" text="0 ₸" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #222222;"/>
+                            <Label text="Потрачено" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import models.User;
 import utils.DataStore;
 import utils.SessionManager;
+import utils.UserDAO;
 
 import java.io.IOException;
 
@@ -143,16 +144,21 @@ public class LoginController {
             return;
         }
 
-        if (DataStore.getUserByEmail(email) != null) {
+        if (UserDAO.emailExists(email)) {
             showError("Ошибка регистрации", "Пользователь с таким email уже существует");
             return;
         }
 
-        int newId = DataStore.users.size() + 1;
-        User newUser = new User(newId, name, email, password);
-        DataStore.users.add(newUser);
+        User newUser = UserDAO.createUser(name, email, password);
 
-        System.out.println("✅ Новый пользователь зарегистрирован: " + name);
+        if (newUser == null) {
+            showError("Ошибка регистрации", "Не удалось создать пользователя. Проверьте подключение к БД.");
+            return;
+        }
+
+        System.out.println(" Новый пользователь зарегистрирован: " + name);
+
+        DataStore.reload();
 
         SessionManager.setCurrentUser(newUser);
 
@@ -169,7 +175,7 @@ public class LoginController {
             System.out.println("Возврат на главное меню...");
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/MainMenu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Mini Airbnb");

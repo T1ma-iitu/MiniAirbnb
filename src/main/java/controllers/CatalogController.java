@@ -134,7 +134,7 @@ public class CatalogController {
             System.out.println("Возврат на главное меню...");
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/MainMenu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Mini Airbnb");

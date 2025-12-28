@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.AboutController"
+            style="-fx-background-color: #FFFFFF;">
+
+    <top>
+        <VBox style="-fx-background-color: #FF385C; -fx-padding: 20;">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Button text="← Назад" onAction="#backToMainMenu"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand; -fx-border-color: white; -fx-border-radius: 5; -fx-padding: 8 15;"/>
+
+                <Label text="👥 О нас" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;">
+                    <font>
+                        <Font name="System Bold" size="28"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="40" style="-fx-padding: 50;" alignment="CENTER">
+
+                <Label text="Команда разработки" style="-fx-font-size: 36px; -fx-font-weight: bold;">
+                    <font>
+                        <Font name="System Bold" size="36"/>
+                    </font>
+                </Label>
+
+                <HBox spacing="40" alignment="CENTER">
+
+                    <VBox spacing="15" alignment="CENTER" style="-fx-background-color: #F7F7F7; -fx-padding: 30; -fx-background-radius: 15;" prefWidth="400">
+                        <Label text="👨‍💻" style="-fx-font-size: 60px;"/>
+                        <Label fx:id="name1" text="Имя Фамилия 1" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                        <Label fx:id="role1" text="Backend Developer" style="-fx-font-size: 16px; -fx-text-fill: #FF385C;"/>
+                        <Separator prefWidth="200"/>
+                        <Label fx:id="task1" text="Работа с базой данных" style="-fx-font-size: 14px; -fx-text-alignment: center;" wrapText="true"/>
+                        <Label fx:id="email1" text="email1@example.com" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                    </VBox>
+
+                    <VBox spacing="15" alignment="CENTER" style="-fx-background-color: #F7F7F7; -fx-padding: 30; -fx-background-radius: 15;" prefWidth="400">
+                        <Label text="👨‍💻" style="-fx-font-size: 60px;"/>
+                        <Label fx:id="name2" text="Имя Фамилия 2" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                        <Label fx:id="role2" text="Frontend Developer" style="-fx-font-size: 16px; -fx-text-fill: #FF385C;"/>
+                        <Separator prefWidth="200"/>
+                        <Label fx:id="task2" text="Дизайн интерфейса" style="-fx-font-size: 14px; -fx-text-alignment: center;" wrapText="true"/>
+                        <Label fx:id="email2" text="email2@example.com" style="-fx-font-size: 12px; -fx-text-fill: #717171;"/>
+                    </VBox>
+
+                </HBox>
+
+                <VBox spacing="15" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 30; -fx-border-color: #EBEBEB; -fx-border-radius: 15; -fx-background-radius: 15;">
+                    <Label text="📚 О проекте" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    <Label fx:id="university" text="IITU" style="-fx-font-size: 18px;"/>
+                    <Label fx:id="course" text="Java Programming" style="-fx-font-size: 16px; -fx-text-fill: #717171;"/>
+                    <Label fx:id="year" text="2024" style="-fx-font-size: 16px; -fx-text-fill: #717171;"/>
+                </VBox>
+
+                <Label text="© 2025 Mini Airbnb" style="-fx-font-size: 14px; -fx-text-fill: #717171;"/>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

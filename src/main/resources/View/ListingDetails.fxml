@@ -94,6 +94,9 @@
                             <Button text="Забронировать" onAction="#bookListing"
                                     style="-fx-background-color: #FF385C; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 15 40; -fx-cursor: hand;"
                                     prefWidth="300">
+                                <Button text="❤️ Добавить в избранное" onAction="#toggleFavorite"
+                                        style="-fx-background-color: #FFFFFF; -fx-text-fill: #FF385C; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 12 40; -fx-cursor: hand; -fx-border-color: #FF385C; -fx-border-width: 2; -fx-border-radius: 8;"
+                                        prefWidth="300"/>
                                 <font>
                                     <Font name="System Bold" size="18"/>
                                 </font>

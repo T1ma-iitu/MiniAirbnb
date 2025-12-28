@@ -10,8 +10,15 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/MainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
+
         stage.setTitle("Mini Airbnb");
         stage.setScene(scene);
+
+        stage.setResizable(false);
+
+        stage.setMinWidth(1200);
+        stage.setMinHeight(800);
+
         stage.show();
     }
 

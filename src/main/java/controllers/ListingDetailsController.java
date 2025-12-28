@@ -11,9 +11,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import models.Booking;
 import models.Listing;
+import utils.BookingDAO;
+import utils.FavoriteDAO;
+import utils.SessionManager;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class ListingDetailsController {
 
@@ -81,7 +86,67 @@ public class ListingDetailsController {
         priceLabel.setText(String.format("%,d ₸", listing.getPrice()));
         descriptionLabel.setText(listing.getDescription());
 
+        FavoriteDAO.incrementViews(listing.getId());
+
+        if (SessionManager.isLoggedIn()) {
+            boolean isFav = FavoriteDAO.isFavorite(SessionManager.getCurrentUserId(), listing.getId());
+        }
+
         loadAmenities(listing.getAmenities());
+    }
+
+    @FXML
+    private void bookListing(ActionEvent event) {
+        if (!SessionManager.isLoggedIn()) {
+            showError("Ошибка", "Войдите в систему", "Для бронирования нужно войти");
+            return;
+        }
+
+        System.out.println("Создание бронирования...");
+
+        LocalDate checkIn = LocalDate.now().plusDays(1);
+        LocalDate checkOut = checkIn.plusDays(2);
+        int guests = 2;
+        int pricePerNight = currentListing.getPrice();
+        int totalPrice = pricePerNight * 2;
+
+        Booking booking = BookingDAO.createBooking(
+                currentListing.getId(),
+                SessionManager.getCurrentUserId(),
+                checkIn,
+                checkOut,
+                guests,
+                totalPrice
+        );
+
+        if (booking != null) {
+            showSuccess("Успешно!",
+                    "Бронирование создано!",
+                    "Даты: " + checkIn + " - " + checkOut + "\nСумма: " + totalPrice + " ₸");
+        } else {
+            showError("Ошибка", "Не удалось создать бронирование", "Попробуйте позже");
+        }
+    }
+
+    @FXML
+    private void toggleFavorite(ActionEvent event) {
+        if (!SessionManager.isLoggedIn()) {
+            showError("Ошибка", "Войдите в систему", "Чтобы добавить в избранное, нужно войти");
+            return;
+        }
+
+        int userId = SessionManager.getCurrentUserId();
+        int listingId = currentListing.getId();
+
+        boolean isFav = FavoriteDAO.isFavorite(userId, listingId);
+
+        if (isFav) {
+            FavoriteDAO.removeFromFavorites(userId, listingId);
+            showInfo("Избранное", "Удалено из избранного", "💔");
+        } else {
+            FavoriteDAO.addToFavorites(userId, listingId);
+            showInfo("Избранное", "Добавлено в избранное!", "❤️");
+        }
     }
 
     private void loadAmenities(String amenitiesString) {
@@ -109,45 +174,12 @@ public class ListingDetailsController {
     }
 
     @FXML
-    private void bookListing(ActionEvent event) {
-        System.out.println("Попытка забронировать: " + currentListing.getTitle());
-
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Бронирование");
-        alert.setHeaderText("Бронирование объявления");
-        alert.setContentText("Вы собираетесь забронировать:\n\n" +
-                currentListing.getTitle() + "\n" +
-                "Цена: " + String.format("%,d ₸", currentListing.getPrice()) + " за ночь\n\n" +
-                "Функция бронирования находится в разработке! 🚀");
-        alert.showAndWait();
-
-        /*
-         * Здесь позже можно добавить переход на экран бронирования:
-         *
-         * try {
-         *     FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Booking.fxml"));
-         *     Scene scene = new Scene(loader.load(), 1000, 700);
-         *
-         *     BookingController controller = loader.getController();
-         *     controller.setListing(currentListing);
-         *
-         *     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-         *     stage.setTitle("Mini Airbnb - Бронирование");
-         *     stage.setScene(scene);
-         *     stage.show();
-         * } catch (IOException e) {
-         *     e.printStackTrace();
-         * }
-         */
-    }
-
-    @FXML
     private void backToCatalog(ActionEvent event) {
         try {
             System.out.println("Возврат к каталогу...");
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Catalog.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Mini Airbnb - Каталог жилья");
@@ -158,5 +190,29 @@ public class ListingDetailsController {
             System.err.println("Ошибка при возврате к каталогу!");
             e.printStackTrace();
         }
+    }
+
+    private void showSuccess(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void showInfo(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void showError(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

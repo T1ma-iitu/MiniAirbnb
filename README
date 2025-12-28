@@ -1,0 +1,112 @@
+# Mini Airbnb - Система бронирования жилья
+
+Финальный проект по Java Programming
+
+## Описание
+
+Приложение для бронирования жилья, похожее на Airbnb. Это его мини версия. Сделано на JavaFX с базой данных PostgreSQL.
+
+## Возможности
+
+Регистрация и вход
+Просмотр объявлений о жилье
+Поиск по городу
+Бронирование жилья
+Личный кабинет с историей бронирований
+Отмена бронирований
+
+## Технологии
+
+Java 17
+JavaFX 17
+PostgreSQL
+Maven
+
+## Как запустить
+
+### 1. Установите программы
+
+- Java JDK 17: https://www.oracle.com/java/technologies/downloads/
+- PostgreSQL: https://www.postgresql.org/download/
+- IntelliJ IDEA: https://www.jetbrains.com/idea/download/
+
+### 2. Создайте базу данных
+
+Откройте pgAdmin и выполните:
+```sql
+CREATE DATABASE miniairbnb;
+```
+
+Потом запустите файл `database_schema.sql` в этой базе (Query Tool → вставить код → F5)
+
+### 3. Настройте подключение
+
+Откройте файл `src/main/java/utils/DatabaseConnection.java`
+
+Измените пароль на свой:
+```java
+private static final String PASSWORD = "ваш_пароль";
+```
+
+### 4. Запустите проект
+
+В IntelliJ IDEA:
+- Откройте папку проекта
+- Найдите `src/main/java/app/MainApp.java`
+- Правая кнопка → Run
+
+## Тестовые аккаунты
+
+Email: `aizhan@mail.kz`
+Пароль: `password123`
+
+Email: `nurlan@mail.kz`
+Пароль: `password123`
+
+## Структура
+```
+MiniAirbnb/
+├── src/main/java/
+│   ├── app/           - Главный класс
+│   ├── controllers/   - Контроллеры
+│   ├── models/        - Модели (User, Listing, Booking)
+│   └── utils/         - Работа с БД
+├── src/main/resources/View/  - Интерфейс (FXML)
+├── database_schema.sql       - SQL скрипт
+└── pom.xml                   - Maven
+```
+
+## Функции
+
+**Авторизация:** вход и регистрация с проверкой данных
+
+**Каталог:** просмотр всех объявлений, поиск по городу
+
+**Бронирование:** создание, просмотр, отмена бронирований (CRUD)
+
+**Личный кабинет:** история бронирований, статистика
+
+## База данных
+
+4 таблицы:
+`users` - пользователи
+`listings` - объявления
+`bookings` - бронирования
+`favorites` - избранное
+
+## Проблемы и решения
+
+**Не подключается к БД?**
+Проверьте пароль в DatabaseConnection.java и что PostgreSQL запущен
+
+**Не находит FXML?**
+Maven → Reload Project
+
+**Ошибки Maven?**
+Выполните: `mvn clean install`
+
+## Автор
+
+Тимур - https://github.com/T1ma-iitu
+
+Проект выполнен в IITU, 2024

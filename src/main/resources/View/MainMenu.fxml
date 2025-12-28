@@ -11,19 +11,28 @@
             style="-fx-background-color: #FFFFFF;">
 
     <top>
-        <VBox style="-fx-background-color: #FF385C; -fx-padding: 20;">
+        <VBox style="-fx-background-color: #FFFFFF; -fx-border-color: #EBEBEB; -fx-border-width: 0 0 1 0;">
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 15 40;">
+                <Label text="🏠 Mini Airbnb" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #FF385C;">
+                    <font>
+                        <Font name="System Bold" size="24"/>
+                    </font>
+                </Label>
 
-            <Label text="🏠 Mini Airbnb" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: white;">
-                <font>
-                    <Font name="System Bold" size="32"/>
-                </font>
-            </Label>
+                <Region HBox.hgrow="ALWAYS"/>
 
-            <Label text="Найди своё идеальное жильё" style="-fx-font-size: 16px; -fx-text-fill: white;">
-                <VBox.margin>
-                    <Insets top="5"/>
-                </VBox.margin>
-            </Label>
+                <Button fx:id="profileButton" text="👤 Профиль" onAction="#openProfile"
+                        style="-fx-background-color: #FFFFFF; -fx-border-color: #DDDDDD; -fx-border-radius: 21; -fx-background-radius: 21; -fx-padding: 5 15; -fx-cursor: hand;">
+                </Button>
+            </HBox>
+
+            <VBox style="-fx-background-color: #FF385C; -fx-padding: 20;">
+                <Label text="Найди своё идеальное жильё" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;">
+                    <font>
+                        <Font name="System Bold" size="28"/>
+                    </font>
+                </Label>
+            </VBox>
         </VBox>
     </top>
 
@@ -64,38 +73,34 @@
 
                 <HBox spacing="20" alignment="CENTER">
                     <VBox spacing="10" alignment="CENTER" style="-fx-background-color: #F7F7F7; -fx-padding: 20; -fx-background-radius: 10; -fx-cursor: hand;" prefWidth="150" prefHeight="120">
-                        <Label text="🏖️" style="-fx-font-size: 40px;"/>
+                        <Label text="☀" style="-fx-font-size: 40px;"/>
                         <Label text="Пляжи" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
                     </VBox>
 
                     <VBox spacing="10" alignment="CENTER" style="-fx-background-color: #F7F7F7; -fx-padding: 20; -fx-background-radius: 10; -fx-cursor: hand;" prefWidth="150" prefHeight="120">
-                        <Label text="🏔️" style="-fx-font-size: 40px;"/>
+                        <Label text="▲" style="-fx-font-size: 40px;"/>
                         <Label text="Горы" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
                     </VBox>
 
                     <VBox spacing="10" alignment="CENTER" style="-fx-background-color: #F7F7F7; -fx-padding: 20; -fx-background-radius: 10; -fx-cursor: hand;" prefWidth="150" prefHeight="120">
-                        <Label text="🏙️" style="-fx-font-size: 40px;"/>
+                        <Label text="■" style="-fx-font-size: 40px;"/>
                         <Label text="Города" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
                     </VBox>
 
                     <VBox spacing="10" alignment="CENTER" style="-fx-background-color: #F7F7F7; -fx-padding: 20; -fx-background-radius: 10; -fx-cursor: hand;" prefWidth="150" prefHeight="120">
-                        <Label text="🏡" style="-fx-font-size: 40px;"/>
+                        <Label text="♦" style="-fx-font-size: 40px;"/>
                         <Label text="Домики" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
                     </VBox>
                 </HBox>
             </VBox>
-
-            <Button text="👤 Вход / Регистрация" onAction="#openLogin"
-                    style="-fx-background-color: #222222; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 12 30; -fx-background-radius: 8; -fx-cursor: hand;"
-                    prefWidth="300"/>
         </VBox>
     </center>
 
     <bottom>
         <HBox alignment="CENTER" spacing="20" style="-fx-background-color: #F7F7F7; -fx-padding: 15;">
-            <Label text="© 2024 Mini Airbnb" style="-fx-text-fill: #717171; -fx-font-size: 12px;"/>
+            <Label text="© 2025 Mini Airbnb" style="-fx-text-fill: #717171; -fx-font-size: 12px;"/>
             <Label text="•" style="-fx-text-fill: #717171;"/>
-            <Label text="Помощь" style="-fx-text-fill: #717171; -fx-font-size: 12px;"/>
+            <Label text="О нас" onMouseClicked="#openAbout" style="-fx-text-fill: #717171; -fx-font-size: 12px; -fx-cursor: hand; -fx-underline: true;"/>
             <Label text="•" style="-fx-text-fill: #717171;"/>
             <Label text="Условия использования" style="-fx-text-fill: #717171; -fx-font-size: 12px;"/>
         </HBox>
